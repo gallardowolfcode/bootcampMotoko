@@ -7,6 +7,6 @@ La proyección del proyecto es migrar el front a React o Vue.js para poder hacer
 
 Cómo hacer deploy?
 
-$ dfx start --clean --background
-$ dfx start --background
-% dfx deploy
+ dfx start --clean --background
+ dfx start --background
+ dfx deploy

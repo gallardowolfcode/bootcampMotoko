@@ -95,23 +95,8 @@
       <div class="title-container">
         <h1>Elección de especialidad Ingeniería en Sistemas Computacionales</h1>
       </div>
-      <h2 id="question2">Datos</h2>
-      <div class="form-container">
-        <form id="radioForm2">
-            <label>
-              <input type="radio" name="option" value="Alumno"> Alumno
-            </label>
-            <label>
-              <input type="radio" name="option" value="Maestro"> Maestro
-            </label>
-            <!-- <label>
-              <input type="text" name="Id" value="Internet Identity">
-            </label> -->
-            <button type="submit">Enviar</button>
-        </form>
-      </div>
+      
       <h2 id="question">Sample Question</h2>
-
       <!-- Form where users vote -->
       <div class="form-container">
         <form id="radioForm">
@@ -126,12 +111,27 @@
             </label><br>
             <button type="submit">Enviar</button>
         </form>
-      </div>
-
-      <!-- Poll results appear here-->
+        <!-- Poll results appear here-->
       <h2 id="results-title">Resultados</h2>
       <div id="results"></div>
-      <div id="alumnos"></div>
+
+        <h2 id="question2">Sample Question2</h2>
+        <!-- Tipo de usuario -->
+      <div class="form-container">
+        <form id="radioForm2">
+            <label>
+              <input type="radio" name="option" value="Alumno"> Alumno
+            </label>
+            <label>
+              <input type="radio" name="option" value="Maestro"> Maestro
+            </label>
+            <button type="submit">Enviar</button>
+        </form>
+      </div>
+      <!-- Muestra de resultados tipo de usuario-->
+      <h2 id="results-title">Resultados</h2>
+      <div id="results2"></div>
+      </div>
     </div>
     <div><button id="reset">Reset</button></div>
 </body>

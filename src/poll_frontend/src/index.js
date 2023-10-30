@@ -2,6 +2,7 @@ import { poll_backend } from "../../declarations/poll_backend";
 const pollForm = document.getElementById("radioForm");
 const pollForm2 = document.getElementById("radioForm2");
 const resultsDiv = document.getElementById('results');
+const resultsDiv2 = document.getElementById('results2');
 const resetButton = document.getElementById('reset');
 
 
@@ -17,20 +18,12 @@ const pollResults2 = {
   "Maestro": 0
 };
 
-//2. EVENT LISTENERS
-
-//Load the Simple Poll's question from the backend when the app loads
 document.addEventListener('DOMContentLoaded', async (e) => {
-   //note that this is at beginning of the submit callback, this is deliberate
-  //This is so the default behavior is set BEFORE the awaits are called below
   e.preventDefault();
-  // Query the question from the backend
+
   const question = await poll_backend.getQuestion();
   document.getElementById("question").innerText = question;
 
-  //Query the vote counts for each option
-  // Example JSON that the frontend will get using the values above
-  // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
   const voteCounts = await poll_backend.getVotes();
   updateLocalVoteCounts(voteCounts);
   displayResults();
@@ -38,28 +31,19 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 }, false);
 
 document.addEventListener('DOMContentLoaded', async (e) => {
-  //note that this is at beginning of the submit callback, this is deliberate
- //This is so the default behavior is set BEFORE the awaits are called below
   e.preventDefault();
-  // Query the question from the backend
-  const question2 = await poll_backend.getQuestion();
-  document.getElementById("question2").innerText = question2;
 
-  //Query the vote counts for each option
-  // Example JSON that the frontend will get using the values above
-  // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-  const alumnosCounts = await poll_backend.getAlumnos();
-  updateLocalVoteCounts(alumnosCountsCounts);
+  const question2 = await poll_backend.getQuestion2();
+  document.getElementById("question2").innerText = question2;
+  
+  const vote2Counts = await poll_backend.getVotes2();
+  updateLocalVote2Counts(vote2Counts);
   displayResults();
   return false;
 }, false);
 
-//Event listener that listens for when the form is submitted.
-//When the form is submitted with an option, it calls the backend canister
-//via "await poll_backend.vote(selectedOption)"
+
 pollForm.addEventListener('submit', async (e) => {
-  //note that this is at beginning of the submit callback, this is deliberate
-  //This is so the default behavior is set BEFORE the awaits are called below
   e.preventDefault(); 
 
   const formData = new FormData(pollForm);
@@ -74,22 +58,19 @@ pollForm.addEventListener('submit', async (e) => {
 }, false);
 
 pollForm2.addEventListener('submit', async (e) => {
-  //note that this is at beginning of the submit callback, this is deliberate
-  //This is so the default behavior is set BEFORE the awaits are called below
   e.preventDefault(); 
-  const formData = new FormData(pollForm2);
-  const checkedValue = formData.get("option");
+  const formData2 = new FormData2(pollForm2);
+  const checkedValue2 = formData2.get("option2");
 
-  const updatedAlumnoCounts = await poll_backend.alumno(checkedValue);
+  const updatedVote2Counts = await poll_backend.vote2(checkedValue2);
   console.log("Returning from await...")
-  console.log(updatedAlumnoCounts);
-  updateLocalAlumnoCounts(updatedAlumnoCounts);
-  displayResults();
+  console.log(updatedVote2Counts);
+  updateLocalVote2Counts(updatedVote2Counts);
+  displayResults2();
   return false;
 }, false);
 
 resetButton.addEventListener('click', async (e) => {
-
     e.preventDefault();
     
     //Reset the options in the backend
@@ -115,12 +96,12 @@ function displayResults() {
 };
 
 function displayResults2() {
-  let resultHTML = '<ul>';
+  let resultHTML2 = '<ul>';
   for (let key in pollResults2) {
-      resultHTML += '<li><strong>' + key + '</strong>: ' + pollResults2[key] + '</li>';
+      resultHTML2 += '<li><strong>' + key + '</strong>: ' + pollResults2[key] + '</li>';
   }
-  resultHTML += '</ul>';
-  resultsDiv.innerHTML = resultHTML;
+  resultHTML2 += '</ul>';
+  resultsDiv2.innerHTML = resultHTML2;
 };
 
 //This helper updates the local JS object that the browser holds
@@ -137,12 +118,12 @@ function updateLocalVoteCounts(arrayOfVoteArrays){
 
 };
 
-function updateLocalAlumnoCounts(arrayOfAlumnoArrays){
+function updateLocalVote2Counts(arrayOfVote2Arrays){
 
-  for (let alumnoArray of arrayOfAlumnoArrays) {
-    let alumnoOption = alumnoArray[0];
-    let alumnoCount = alumnoArray[1];
-    pollResults2[alumnoOption] = alumnoCount;
+  for (let vote2Array of arrayOfVote2Arrays) {
+    let vote2Option = vote2Array[0];
+    let vote2Count = vote2Array[1];
+    pollResults2[vote2Option] = vote2Count;
   }
 
 };
