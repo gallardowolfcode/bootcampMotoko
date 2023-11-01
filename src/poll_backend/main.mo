@@ -66,16 +66,13 @@ actor {
 // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
     
   public func resetVotes() : async [(Text, Nat)] {
-
     votes.put("Ciber Seguridad", 0);
     votes.put("Internet de las Cosas", 0);
     votes.put("Inteligencia Artificial", 0);
     Iter.toArray(votes.entries())
-
   };
 
   public func resetVotes2() : async [(Text, Nat)] {
-
     votes2.put("Maestro", 0);
     votes2.put("Alumno", 0);
     Iter.toArray(votes2.entries())

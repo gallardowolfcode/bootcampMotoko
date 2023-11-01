@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   const voteCounts = await poll_backend.getVotes();
   updateLocalVoteCounts(voteCounts);
   displayResults();
+  displayResults2();
   return false;
 }, false);
 
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   const vote2Counts = await poll_backend.getVotes2();
   updateLocalVote2Counts(vote2Counts);
   displayResults();
+  displayResults2();
   return false;
 }, false);
 
@@ -54,12 +56,13 @@ pollForm.addEventListener('submit', async (e) => {
   console.log(updatedVoteCounts);
   updateLocalVoteCounts(updatedVoteCounts);
   displayResults();
+  displayResults2();
   return false;
 }, false);
 
 pollForm2.addEventListener('submit', async (e) => {
   e.preventDefault(); 
-  const formData2 = new FormData2(pollForm2);
+  const formData2 = new FormData(pollForm2);
   const checkedValue2 = formData2.get("option2");
 
   const updatedVote2Counts = await poll_backend.vote2(checkedValue2);
@@ -67,6 +70,7 @@ pollForm2.addEventListener('submit', async (e) => {
   console.log(updatedVote2Counts);
   updateLocalVote2Counts(updatedVote2Counts);
   displayResults2();
+  console.log(updatedVote2Counts);
   return false;
 }, false);
 
@@ -75,11 +79,15 @@ resetButton.addEventListener('click', async (e) => {
     
     //Reset the options in the backend
     await poll_backend.resetVotes();
+    await poll_backend.resetVotes2();
     const voteCounts = await poll_backend.getVotes();
     updateLocalVoteCounts(voteCounts);
+    const voteCounts2 = await poll_backend.getVotes2();
+    updateLocalVote2Counts(voteCounts2);
 
     //re-render the results once the votes are reset in the backend
     displayResults();
+    displayResults2();
     return false;
 }, false);
 
