@@ -1,19 +1,19 @@
-import { poll_backend } from "../../declarations/poll_backend";
-const pollForm = document.getElementById("radioForm");
-const pollForm2 = document.getElementById("radioForm2");
+import { bootcampMotoko_backend } from "../../declarations/bootcampMotoko_backend";
+const bootcampMotokoForm = document.getElementById("radioForm");
+const bootcampMotokoForm2 = document.getElementById("radioForm2");
 const resultsDiv = document.getElementById('results');
 const resultsDiv2 = document.getElementById('results2');
 const resetButton = document.getElementById('reset');
 
 
 //1. LOCAL DATA
-const pollResults = {
+const bootcampMotokoResults = {
     "Ciber Seguridad": 0,
     "Internet de las Cosas": 0,
     "Inteligencia Artificial": 0
 };
 
-const pollResults2 = {
+const bootcampMotokoResults2 = {
   "Alumno": 0,
   "Maestro": 0
 };
@@ -21,10 +21,10 @@ const pollResults2 = {
 document.addEventListener('DOMContentLoaded', async (e) => {
   e.preventDefault();
 
-  const question = await poll_backend.getQuestion();
+  const question = await bootcampMotoko_backend.getQuestion();
   document.getElementById("question").innerText = question;
 
-  const voteCounts = await poll_backend.getVotes();
+  const voteCounts = await bootcampMotoko_backend.getVotes();
   updateLocalVoteCounts(voteCounts);
   displayResults();
   displayResults2();
@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 document.addEventListener('DOMContentLoaded', async (e) => {
   e.preventDefault();
 
-  const question2 = await poll_backend.getQuestion2();
+  const question2 = await bootcampMotoko_backend.getQuestion2();
   document.getElementById("question2").innerText = question2;
   
-  const vote2Counts = await poll_backend.getVotes2();
+  const vote2Counts = await bootcampMotoko_backend.getVotes2();
   updateLocalVote2Counts(vote2Counts);
   displayResults();
   displayResults2();
@@ -45,13 +45,13 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 }, false);
 
 
-pollForm.addEventListener('submit', async (e) => {
+bootcampMotokoForm.addEventListener('submit', async (e) => {
   e.preventDefault(); 
 
-  const formData = new FormData(pollForm);
+  const formData = new FormData(bootcampMotokoForm);
   const checkedValue = formData.get("option");
 
-  const updatedVoteCounts = await poll_backend.vote(checkedValue);
+  const updatedVoteCounts = await bootcampMotoko_backend.vote(checkedValue);
   console.log("Returning from await...")
   console.log(updatedVoteCounts);
   updateLocalVoteCounts(updatedVoteCounts);
@@ -60,12 +60,12 @@ pollForm.addEventListener('submit', async (e) => {
   return false;
 }, false);
 
-pollForm2.addEventListener('submit', async (e) => {
+bootcampMotokoForm2.addEventListener('submit', async (e) => {
   e.preventDefault(); 
-  const formData2 = new FormData(pollForm2);
+  const formData2 = new FormData(bootcampMotokoForm2);
   const checkedValue2 = formData2.get("option2");
 
-  const updatedVote2Counts = await poll_backend.vote2(checkedValue2);
+  const updatedVote2Counts = await bootcampMotoko_backend.vote2(checkedValue2);
   console.log("Returning from await...")
   console.log(updatedVote2Counts);
   updateLocalVote2Counts(updatedVote2Counts);
@@ -78,11 +78,11 @@ resetButton.addEventListener('click', async (e) => {
     e.preventDefault();
     
     //Reset the options in the backend
-    await poll_backend.resetVotes();
-    await poll_backend.resetVotes2();
-    const voteCounts = await poll_backend.getVotes();
+    await bootcampMotoko_backend.resetVotes();
+    await bootcampMotoko_backend.resetVotes2();
+    const voteCounts = await bootcampMotoko_backend.getVotes();
     updateLocalVoteCounts(voteCounts);
-    const voteCounts2 = await poll_backend.getVotes2();
+    const voteCounts2 = await bootcampMotoko_backend.getVotes2();
     updateLocalVote2Counts(voteCounts2);
 
     //re-render the results once the votes are reset in the backend
@@ -93,11 +93,11 @@ resetButton.addEventListener('click', async (e) => {
 
 //3. HELPER FUNCTIONS
 
-//Helper vanilla JS function to create the HTML to render the results of the poll
+//Helper vanilla JS function to create the HTML to render the results of the bootcampMotoko
 function displayResults() {
   let resultHTML = '<ul>';
-  for (let key in pollResults) {
-      resultHTML += '<li><strong>' + key + '</strong>: ' + pollResults[key] + '</li>';
+  for (let key in bootcampMotokoResults) {
+      resultHTML += '<li><strong>' + key + '</strong>: ' + bootcampMotokoResults[key] + '</li>';
   }
   resultHTML += '</ul>';
   resultsDiv.innerHTML = resultHTML;
@@ -105,8 +105,8 @@ function displayResults() {
 
 function displayResults2() {
   let resultHTML2 = '<ul>';
-  for (let key in pollResults2) {
-      resultHTML2 += '<li><strong>' + key + '</strong>: ' + pollResults2[key] + '</li>';
+  for (let key in bootcampMotokoResults2) {
+      resultHTML2 += '<li><strong>' + key + '</strong>: ' + bootcampMotokoResults2[key] + '</li>';
   }
   resultHTML2 += '</ul>';
   resultsDiv2.innerHTML = resultHTML2;
@@ -121,7 +121,7 @@ function updateLocalVoteCounts(arrayOfVoteArrays){
     //Example voteArray -> ["Motoko","0"]
     let voteOption = voteArray[0];
     let voteCount = voteArray[1];
-    pollResults[voteOption] = voteCount;
+    bootcampMotokoResults[voteOption] = voteCount;
   }
 
 };
@@ -131,7 +131,7 @@ function updateLocalVote2Counts(arrayOfVote2Arrays){
   for (let vote2Array of arrayOfVote2Arrays) {
     let vote2Option = vote2Array[0];
     let vote2Count = vote2Array[1];
-    pollResults2[vote2Option] = vote2Count;
+    bootcampMotokoResults2[vote2Option] = vote2Count;
   }
 
 };

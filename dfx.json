@@ -1,19 +1,19 @@
 {
   "canisters": {
-    "poll_backend": {
-      "main": "src/poll_backend/main.mo",
+    "bootcampMotoko_backend": {
+      "main": "src/bootcampMotoko_backend/main.mo",
       "type": "motoko"
     },
-    "poll_frontend": {
+    "bootcampMotoko_frontend": {
       "dependencies": [
-        "poll_backend"
+        "bootcampMotoko_backend"
       ],
       "frontend": {
-        "entrypoint": "src/poll_frontend/src/index.html"
+        "entrypoint": "src/bootcampMotoko_frontend/src/index.html"
       },
       "source": [
-        "src/poll_frontend/assets",
-        "dist/poll_frontend/"
+        "src/bootcampMotoko_frontend/assets",
+        "dist/bootcampMotoko_frontend/"
       ],
       "type": "assets"
     }
