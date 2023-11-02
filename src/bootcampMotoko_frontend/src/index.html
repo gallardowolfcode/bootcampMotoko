@@ -15,6 +15,9 @@
 
       .container {
         border: 1px red solid;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         max-width: 90%;
         margin: 0 auto;
         padding: 10px;
@@ -44,6 +47,8 @@
 
       form {
         margin-bottom: 20px;
+        flex-grow: 1;
+        flex-basis: 200;
         padding: 20px;
         border-radius: 5px;
       }
@@ -91,12 +96,12 @@
     </style>
 </head>
 <body>
-    <div class="container">
-      <div class="title-container">
-        <h1>Elección de especialidad Ingeniería en Sistemas Computacionales</h1>
-      </div>
-      
-      <h2 id="question">Sample Question</h2>
+  <div class="title-container">
+    <h1>Elección de especialidad Ingeniería en Sistemas Computacionales</h1>
+  </div>
+
+    <div class="container"> 
+      <div><h2 id="question">Sample Question</h2>
       <!-- Form where users vote -->
       <div class="form-container">
         <form id="radioForm">
@@ -108,28 +113,22 @@
             </label><br>
             <label>
                 <input type="radio" name="option" value="Inteligencia Artificial"> Inteligencia Artificial
-            </label><br>
-            <button type="submit">Enviar</button>
+            </label><br></form>
+            <div><h2 id="question2">Sample Question2</h2>
+              <form id="radioForm2">
+                <label>
+                  <input type="radio" name="option2" value="Alumno"> Alumno
+                </label>
+                <label>
+                  <input type="radio" name="option2" value="Maestro"> Maestro
+                </label>
+            </div>
         </form>
+        <button type="submit">Enviar</button>
+      </div>
         <!-- bootcampMotoko results appear here-->
       <h2 id="results-title">Resultados</h2>
-      <div id="results"></div>
-
-        <h2 id="question2">Sample Question2</h2>
-        <!-- Tipo de usuario -->
-      <div class="form-container">
-        <form id="radioForm2">
-            <label>
-              <input type="radio" name="option2" value="Alumno"> Alumno
-            </label>
-            <label>
-              <input type="radio" name="option2" value="Maestro"> Maestro
-            </label>
-            <button type="submit">Enviar</button>
-        </form>
-      </div>
-      <!-- Muestra de resultados tipo de usuario-->
-      <h2 id="results-title">Resultados</h2>
+      <div id="results", id="results2"></div>
       <div id="results2"></div>
       </div>
     </div>
