@@ -6,7 +6,7 @@ import Iter "mo:base/Iter";
 
 actor {
   var question: Text = "¿Qué especialidad quieres elegir en la Carrera de Ingeniería en Sistemas Computacionales?";
-  var question2: Text = "Datos";
+  var question2: Text = "Ocupación";
   var votes: RBTree.RBTree<Text, Nat> = RBTree.RBTree(Text.compare);
   var votes2: RBTree.RBTree<Text,Nat> = RBTree.RBTree(Text.compare);
 
