@@ -6,7 +6,6 @@ const resultsDiv2 = document.getElementById('results2');
 const resetButton = document.getElementById('reset');
 
 
-//1. LOCAL DATA
 const bootcampMotokoResults = {
     "Ciber Seguridad": 0,
     "Internet de las Cosas": 0,
@@ -93,7 +92,6 @@ resetButton.addEventListener('click', async (e) => {
 
 //3. HELPER FUNCTIONS
 
-//Helper vanilla JS function to create the HTML to render the results of the bootcampMotoko
 function displayResults() {
   let resultHTML = '<ul>';
   for (let key in bootcampMotokoResults) {
@@ -112,9 +110,7 @@ function displayResults2() {
   resultsDiv2.innerHTML = resultHTML2;
 };
 
-//This helper updates the local JS object that the browser holds
-// Example JSON that the frontend will get using the values above
-  // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
+
 function updateLocalVoteCounts(arrayOfVoteArrays){
 
   for (let voteArray of arrayOfVoteArrays) {
