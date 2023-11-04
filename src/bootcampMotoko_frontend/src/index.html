@@ -11,10 +11,16 @@
         margin: 0;
         padding: 0;
         background-color: rgb(226, 217, 217);
+        margin: 0;
+        font:normal 75% Arial, Helvetica, sans-serif;
+      }
+
+      canvas {
+        display: block;
+        vertical-align: bottom;
       }
 
       .container {
-        border: 1px red solid;
         max-width: 90%;
         margin: 0 auto;
         padding: 10px;
@@ -88,9 +94,65 @@
         border-radius: 5px;
         position: relative;
       }
+
+      /* ---- particles.js container ---- */
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  background-image: url(/src/bootcampMotoko_frontend/assets/img/quad.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/* ---- stats.js ---- */
+
+.count-particles{
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles{
+  font-size: 1.1em;
+}
+
+#stats,
+.count-particles{
+  -webkit-user-select: none;
+}
+
+#stats{
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.count-particles{
+  border-radius: 0 0 3px 3px;
+}
     </style>
 </head>
 <body>
+  <!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- stats - count particles -->
+<div class="count-particles">
+  <span class="js-count-particles">--</span> particle
+</div>
     <div class="container">
       <div class="title-container">
         <h1>Elección de especialidad Ingeniería en Sistemas Computacionales</h1>
