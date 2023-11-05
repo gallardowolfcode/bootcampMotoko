@@ -96,7 +96,6 @@ resetButton.addEventListener('click', async (e) => {
     const voteCounts2 = await bootcampMotoko_backend.getVotes2();
     updateLocalVote2Counts(voteCounts2);
 
-    //re-render the results once the votes are reset in the backend
     displayResults();
     displayResults2();
     return false;
@@ -104,7 +103,6 @@ resetButton.addEventListener('click', async (e) => {
 
 //3. HELPER FUNCTIONS
 
-//Helper vanilla JS function to create the HTML to render the results of the bootcampMotoko
 function displayResults() {
   let resultHTML = '<ul>';
   for (let key in bootcampMotokoResults) {
@@ -123,26 +121,19 @@ function displayResults2() {
   resultsDiv2.innerHTML = resultHTML2;
 };
 
-//This helper updates the local JS object that the browser holds
-// Example JSON that the frontend will get using the values above
-  // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
 function updateLocalVoteCounts(arrayOfVoteArrays){
-
   for (let voteArray of arrayOfVoteArrays) {
     //Example voteArray -> ["Motoko","0"]
     let voteOption = voteArray[0];
     let voteCount = voteArray[1];
     bootcampMotokoResults[voteOption] = voteCount;
   }
-
 };
 
 function updateLocalVote2Counts(arrayOfVote2Arrays){
-
   for (let vote2Array of arrayOfVote2Arrays) {
     let vote2Option = vote2Array[0];
     let vote2Count = vote2Array[1];
     bootcampMotokoResults2[vote2Option] = vote2Count;
   }
-
 };
