@@ -63,8 +63,6 @@ bootcampMotokoForm.addEventListener('submit', async (e) => {
 bootcampMotokoForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const formData3 = new FormData(bootcampMotokoForm3);
-  const innerText = formData.get("text");
   const updatedData =await bootcampMotoko_backend.data(updatedData);
   console.log("Returning from await...")
   console.log(updatedData);
