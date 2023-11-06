@@ -1,4 +1,4 @@
-Sistema de elección Especialidades Ingeniería en sistemas computacionales
+Sistema para elección de Especialidades Ingeniería en sistemas computacionales
 
 Básicamente el programa solicita tu elección para tu especialidad dentro de la carrera de ISC, genera un contador con tu elección y listo.
 A futuro se propone validar identidad del usuario y poder manejar este proyecto como el sistema central para elegir tu especialidad de ntro de la carrera y ayudar al departamento de ISC para agilizar dicho trámite.
